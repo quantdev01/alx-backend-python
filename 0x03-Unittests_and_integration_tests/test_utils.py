@@ -6,6 +6,7 @@ from parameterized import parameterized
 Documented the lib this will be testing cases
 """
 
+
 class TestAccessNestedMap(unittest.TestCase):
     """
     Class for testing the nested Map result
@@ -20,6 +21,17 @@ class TestAccessNestedMap(unittest.TestCase):
         my function to return assertEqual
         """
         self.assertEqual(utils.access_nested_map(a, b), expect)
+
+    @parameterized.expand([
+        ({}, "a", KeyError),
+        ({"a": 1}, ["a", "b"], KeyError),
+        ])
+    def test_access_nested_map_exception(self, a, b, expect):
+        """
+        Raises an exception of KeyError
+        """
+        with self.assertRaises(KeyError):
+            utils.access_nested_map(a, b)
 
 
 if __name__ == '__main__':
