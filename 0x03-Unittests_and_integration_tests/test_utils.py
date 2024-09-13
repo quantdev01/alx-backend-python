@@ -62,5 +62,32 @@ class TestGetJson(unittest.TestCase):
         self.assertEqual(result, expect)
 
 
+class TestMemoize(unittest.TestCase):
+    """
+    class test using memoize
+    """
+    def test_memoize(self):
+        """
+        memoize funtion usage
+        """
+        class TestClass:
+            """
+            Test class
+            """
+            def a_method(self):
+                """
+                method to test
+                """
+                return 42
+
+            @memoize
+            def a_property(self):
+                """
+                a property
+                """
+                return self.a_method()
+        
+
+
 if __name__ == '__main__':
     unittest.main()
