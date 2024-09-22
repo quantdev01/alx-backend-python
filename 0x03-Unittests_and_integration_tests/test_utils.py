@@ -4,6 +4,7 @@ import unittest
 from parameterized import parameterized
 from unittest.mock import Mock
 from unittest.mock import patch
+from utils import memoize
 """
 Documented the lib this will be testing cases
 """
@@ -61,12 +62,7 @@ class TestGetJson(unittest.TestCase):
 
         self.assertEqual(result, expect)
 
-
-class TestMemoize(unittest.TestCase):
-    """
-    class test using memoize
-    """
-    class TestClass:
+class TestClass:
         """
         Test class
         """
@@ -81,14 +77,18 @@ class TestMemoize(unittest.TestCase):
             """A property"""
             return self.a_method()
 
+class TestMemoize(unittest.TestCase):
+    """
+    class test using memoize
+    """
     @patch.object(TestClass, 'a_method')
-    def test_memoize(self):
+    def test_memoize(self, mock_a_method):
         """
         memoize funtion usage
         """
         mock_a_method.return_value = 42
 
-        test_instance = TestCase()
+        test_instance = TestClass()
         result1 = test_instance.a_property
         result2 = test_instance.a_property
 
