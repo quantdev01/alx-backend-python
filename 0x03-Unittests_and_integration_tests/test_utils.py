@@ -62,20 +62,22 @@ class TestGetJson(unittest.TestCase):
 
         self.assertEqual(result, expect)
 
-class TestClass:
-        """
-        Test class
-        """
-        def a_method(self):
-            """
-            a method
-            """
-            return 42
 
-        @memoize
-        def a_property(self):
-            """A property"""
-            return self.a_method()
+class TestClass:
+    """
+    Test class
+    """
+    def a_method(self):
+        """
+        a method
+        """
+        return 42
+
+    @memoize
+    def a_property(self):
+        """A property"""
+        return self.a_method()
+
 
 class TestMemoize(unittest.TestCase):
     """
@@ -95,7 +97,6 @@ class TestMemoize(unittest.TestCase):
         self.assertEqual(result1, 42)
         self.assertEqual(result2, 42)
         mock_a_method.assert_called_once_with()
-
 
 
 if __name__ == '__main__':
