@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
+"""
+Documented the lib this will be testing cases
+module doc
+"""
+
+
 import utils
 import unittest
 from parameterized import parameterized
 from unittest.mock import Mock
 from unittest.mock import patch
 from utils import memoize
-"""
-Documented the lib this will be testing cases
-"""
 
 
 class TestAccessNestedMap(unittest.TestCase):
