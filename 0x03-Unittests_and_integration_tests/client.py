@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""A Github org client
+"""A github org client
 """
 from typing import (
     List,
@@ -14,7 +14,7 @@ from utils import (
 
 
 class GithubOrgClient:
-    """A Github org client
+    """A Githib org client
     """
     ORG_URL = "https://api.github.com/orgs/{org}"
 
@@ -30,13 +30,11 @@ class GithubOrgClient:
     @property
     def _public_repos_url(self) -> str:
         """Public repos URL"""
-        # Fix: Access self.org as a property, not a method call
         return self.org["repos_url"]
 
     @memoize
     def repos_payload(self) -> Dict:
         """Memoize repos payload"""
-        # Fix: Access self._public_repos_url property without parentheses
         return get_json(self._public_repos_url)
 
     def public_repos(self, license: str = None) -> List[str]:
@@ -58,4 +56,3 @@ class GithubOrgClient:
         except KeyError:
             return False
         return has_license
-
