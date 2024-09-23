@@ -4,12 +4,10 @@ Module docummentation
 mod docu
 """
 
-
 import unittest
 from unittest.mock import patch
 from parameterized import parameterized
 from client import GithubOrgClient
-
 
 class TestGithubOrgClient(unittest.TestCase):
     """Test case for the GithubOrgClient.org method."""
@@ -18,7 +16,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ("google",),
         ("abc",),
     ])
-    @patch('client.get_json', return_value={"key": "value"})
+    @patch('client.get_json', return_value={"key": "value"})  # Mock get_json correctly
     def test_org(self, org_name, mock_get_json):
         """Test that GithubOrgClient.org returns the correct value."""
         # Arrange: Create a GithubOrgClient instance for the given org_name
@@ -28,9 +26,8 @@ class TestGithubOrgClient(unittest.TestCase):
         result = client.org()
 
         # Assert: Ensure get_json is called once with the correct URL
-        mock_get_json.assert_called_once_with(
-                f"https://api.github.com/orgs/{org_name}")
-        self.assertEqual(result, {"key": "value"})  # Expected mock
+        mock_get_json.assert_called_once_with(f"https://api.github.com/orgs/{org_name}")
+        self.assertEqual(result, {"key": "value"})  # Expected mocke
 
 
 if __name__ == "__main__":
